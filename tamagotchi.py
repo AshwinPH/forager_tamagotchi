@@ -60,7 +60,7 @@ class container:
         headerHeight = abs(self.headers[2]+self.headers[3])
         
         self.cellDims = (int((frameWidth-headerWidth)/self.divisions[1]),int((frameHeight-headerHeight)/self.divisions[0]))
-        self.headerDims = ((self.headers[0],frameHeight-headerHeight),(self.headers[1],frameHeight-headerHeight),(self.headers[2],frameWidth-headerWidth),(self.headers[3],frameWidth-headerWidth))
+        self.headerDims = ((self.headers[0]-self.headers[4],frameHeight-headerHeight),(self.headers[1]-self.headers[4],frameHeight-headerHeight),(self.headers[2]-self.headers[4],frameWidth-headerWidth),(self.headers[3]-self.headers[4],frameWidth-headerWidth))
         
     def draw(self,display):
         #frame first
@@ -68,32 +68,36 @@ class container:
         #headers 
         #left
         if not(self.headers[0]==0):
-            x1 = self.frame[0]+self.headers[0]
-            y1 = self.frame[1]
-            x2 = x1
-            y2 = self.frame[3]
-            display.line(x1,y1,x2,y2)
+            for i in range(self.headers[4]):
+                x1 = self.frame[0]+self.headers[0]-i
+                y1 = self.frame[1]
+                x2 = x1
+                y2 = self.frame[3]
+                display.line(x1,y1,x2,y2)
         #right
         if not(self.headers[1]==0):
-            x1 = self.frame[2]-self.headers[1]
-            y1 = self.frame[1]
-            x2 = x1
-            y2 = self.frame[3]
-            display.line(x1,y1,x2,y2)
+            for i in range(self.headers[4]):    
+                x1 = self.frame[2]-self.headers[1]+i
+                y1 = self.frame[1]
+                x2 = x1
+                y2 = self.frame[3]
+                display.line(x1,y1,x2,y2)
         #top
         if not(self.headers[2]==0):
-            x1 = self.frame[0]
-            y1 = self.frame[1]+self.headers[2]
-            x2 = self.frame[2]
-            y2 = y1
-            display.line(x1,y1,x2,y2)
+            for i in range(self.headers[4]):
+                x1 = self.frame[0]
+                y1 = self.frame[1]+self.headers[2]-i
+                x2 = self.frame[2]
+                y2 = y1
+                display.line(x1,y1,x2,y2)
         #bottom
         if not(self.headers[3]==0):
-            x1 = self.frame[0]
-            y1 = self.frame[3]-self.headers[3]
-            x2 = self.frame[2]
-            y2 = y1
-            display.line(x1,y1,x2,y2)
+            for i in range(self.headers[4]):
+                x1 = self.frame[0]
+                y1 = self.frame[3]-self.headers[3]+i
+                x2 = self.frame[2]
+                y2 = y1
+                display.line(x1,y1,x2,y2)
         
         #divisions
         #rows
