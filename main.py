@@ -2,7 +2,9 @@ from picographics import PicoGraphics, DISPLAY_INKY_PACK
 from pimoroni import Button
 import math as m
 import time
+import tamagotchi as tg
 
+'''
 def arc(x,y,r,t1,t2):
     #interval = 2*np.pi*r
     r=r-0.5
@@ -37,6 +39,7 @@ def rectRound(x1,y1,x2,y2,r,d=1):
         y2 = y2-1
         r = r-1
     return
+'''
 display = PicoGraphics(display=DISPLAY_INKY_PACK)
 display.set_update_speed(2)
 
@@ -48,7 +51,7 @@ display.set_pen(15)
 display.clear()
 
 
-
+'''
 display.set_pen(15)
 display.clear()
 display.set_pen(0)
@@ -57,5 +60,24 @@ rectRound(0,96,168,128,10,2)
 rectRound(188,0,296,24,10,2)
 rectRound(188,24,296,24+68,10,2)
 rectRound(168,92,296,128,10,2)
+display.update()
+'''
+'''
+sBF=(0,96,168,128,10,2)
+sBH=(0,0,10,0,1)
+sBD=(2,2,1)
+statBox = tg.container(sBF,sBD,sBH)
+display.set_pen(0)
+statBox.draw(display)
+'''
+testFrame=(10,10,256,118,10,2)
+testHeaders=(30,0,0,0,1)
+testDivs=(6,4,1)
+testBox=tg.container(testFrame,testDivs,testHeaders)
+display.set_pen(0)
+testBox.draw(display)
+
+
+
 display.update()
 
